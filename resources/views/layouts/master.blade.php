@@ -50,7 +50,7 @@
                     <a class="dropdown-item" href="{{ route('raciones.index') }}"><i class="far fa-arrow-alt-circle-right"></i> Raciones</a>
                     <a class="dropdown-item" href="{{ route('ingredientes.index') }}"><i class="far fa-arrow-alt-circle-right"></i> Ingredientes</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#"><i class="far fa-arrow-alt-circle-right"></i> Grupos</a>
+                    <a class="dropdown-item" href="{{ route('grupos.index') }}"><i class="far fa-arrow-alt-circle-right"></i> Grupos</a>
                 </div>
             </li>
             <li class="nav-item">

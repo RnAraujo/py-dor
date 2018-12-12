@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class DependencyController extends Controller
 {
+    private $validate = [
+        'definition' => 'required|min:3|max:50'
+    ];
+
     public function index()
     {
         $dependencies = Dependence::all();
@@ -16,25 +20,21 @@ class DependencyController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('dependencies.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate($this->validate);
+
+        $dependence = new Dependence;
+        $dependence->definition = $request->definition;
+
+        $dependence->save();
+
+        return redirect()->route('dependencias.index');
     }
 
     /**
@@ -48,37 +48,32 @@ class DependencyController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $dependence = Dependence::find($id);
+
+        return view('dependencies.edit', [
+            'dependence' => $dependence
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate($this->validate);
+
+        $dependence = Dependence::find($id);
+
+        $dependence->definition = $request->definition;
+
+        $dependence->save();
+
+        return redirect()->route('dependencias.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        Dependence::destroy($id);
+
+        return redirect()->route('dependencias.index');
     }
 }

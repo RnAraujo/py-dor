@@ -13,6 +13,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::resource('grupos', 'GroupController');
 Route::resource('ingredientes', 'IngredientController');
 Route::resource('raciones', 'RationController');
 Route::resource('tipos', 'TypeBeneficiaryController');

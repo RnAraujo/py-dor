@@ -25,7 +25,7 @@
                         <td>{{ $item->definition }}</td>
                         <td><i class="fas fa-clipboard-list"></i> Integrantes</td>
                         <td>
-                            <a href="{{ route('raciones.edit', $item) }}"><i class="fas fa-edit"></i> Editar</a>
+                            <a href="{{ route('dependencias.edit', $item) }}"><i class="fas fa-edit"></i> Editar</a>
                         </td>
                     </tr>
                 @endforeach
