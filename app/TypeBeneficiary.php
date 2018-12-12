@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TypeBenefited extends Model
+class TypeBeneficiary extends Model
 {
-    protected $table = 'type_benefited';
+    protected $table = 'types_beneficiary';
 
     public $timestamps = false;
 }

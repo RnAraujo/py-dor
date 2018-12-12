@@ -2,39 +2,37 @@
 
 namespace App\Http\Controllers;
 
+use App\Ration;
 use Illuminate\Http\Request;
 
 class RationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $rations = Ration::all();
+
+        return view('rations.index', [
+            'rations' => $rations
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('rations.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'definition' => 'required|max:30'
+        ]);
+
+        $ration = new Ration;
+        $ration->definition = $request->definition;
+
+        $ration->save();
+
+        return redirect()->route('raciones.index');
     }
 
     /**
@@ -48,37 +46,34 @@ class RationController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $ration = Ration::find($id);
+
+        return view('rations.edit', [
+            'ration' => $ration
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'definition' => 'required|max:30'
+        ]);
+
+        $ration = Ration::find($id);
+
+        $ration->definition = $request->definition;
+
+        $ration->save();
+
+        return redirect()->route('raciones.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        Ration::destroy($id);
+
+        return redirect()->route('raciones.index');
     }
 }

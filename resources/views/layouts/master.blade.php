@@ -47,8 +47,8 @@
                     <a class="dropdown-item" href="#"><i class="far fa-arrow-alt-circle-right"></i> Beneficiados</a>
                     <a class="dropdown-item" href="#"><i class="far fa-arrow-alt-circle-right"></i> Hojas</a>
                     <a class="dropdown-item" href="#"><i class="far fa-arrow-alt-circle-right"></i> Dependencias</a>
-                    <a class="dropdown-item" href="#"><i class="far fa-arrow-alt-circle-right"></i> Tipos Beneficiados</a>
-                    <a class="dropdown-item" href="#"><i class="far fa-arrow-alt-circle-right"></i> Raciones</a>
+                    <a class="dropdown-item" href="{{ route('tipos.index') }}"><i class="far fa-arrow-alt-circle-right"></i> Tipos Beneficiados</a>
+                    <a class="dropdown-item" href="{{ route('raciones.index') }}"><i class="far fa-arrow-alt-circle-right"></i> Raciones</a>
                     <a class="dropdown-item" href="{{ route('ingredientes.index') }}"><i class="far fa-arrow-alt-circle-right"></i> Ingredientes</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#"><i class="far fa-arrow-alt-circle-right"></i> Grupos</a>

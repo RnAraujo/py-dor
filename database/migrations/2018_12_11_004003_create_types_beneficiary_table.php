@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTypeBenefitedTable extends Migration
+class CreateTypesBeneficiaryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTypeBenefitedTable extends Migration
      */
     public function up()
     {
-        Schema::create('type_benefited', function (Blueprint $table) {
+        Schema::create('types_beneficiary', function (Blueprint $table) {
             $table->increments('id');
             $table->string('definition', 30);
         });
@@ -26,6 +26,6 @@ class CreateTypeBenefitedTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('type_benefited');
+        Schema::dropIfExists('types_beneficiary');
     }
 }
