@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Dependence;
 use Illuminate\Http\Request;
 
 class DependencyController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $dependencies = Dependence::all();
+
+        return view('dependencies.index', [
+            'dependencies' => $dependencies
+        ]);
     }
 
     /**
