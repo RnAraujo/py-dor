@@ -6,10 +6,10 @@
             Formulario de Dependencias
         </div>
         <div class="card-body">
-            <form method="post" action="{{ route('dependencias.store') }}">
+            <form method="post" action="{{ route('grupos.store') }}">
                 @csrf
 
-                @include('dependencies.partials.fields')
+                @include('groups.partials.fields')
 
                 <div class="form-group row">
                     <div class="col-md-10 offset-md-2">

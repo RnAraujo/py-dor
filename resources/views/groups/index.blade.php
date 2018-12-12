@@ -26,8 +26,9 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $item->id }}</td>
                         <td>
-                            user<br>
+                            {{ $item->user->name }}<br>
                             <small class="text-info">{{ $item->created_at }}</small>
+                            <pre class="observations">{{ $item->observations }}</pre>
                         </td>
                         <td>
                             @if ($item->is_open)

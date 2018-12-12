@@ -16,6 +16,7 @@
     <!-- Styles -->
     <link href="{{ asset('static/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('static/fontawesome-5.5/css/all.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('static/app.css') }}" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
