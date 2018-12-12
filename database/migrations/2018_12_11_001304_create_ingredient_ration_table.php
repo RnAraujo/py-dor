@@ -19,8 +19,8 @@ class CreateIngredientRationTable extends Migration
             $table->integer('ration_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('ingredient_id')->references('id')->on('ingredients');
-            $table->foreign('ration_id')->references('id')->on('rations');
+            $table->foreign('ingredient_id')->references('id')->on('ingredients')->onDelete('cascade');;
+            $table->foreign('ration_id')->references('id')->on('rations')->onDelete('cascade');;
         });
     }
 

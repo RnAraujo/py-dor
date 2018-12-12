@@ -2,19 +2,18 @@
 
 @section('content')
     <div class="card">
-        <div class="card-header">
-            Formulario de Ingredientes
-        </div>
+        <div class="card-header">Editar Ingrediente</div>
         <div class="card-body">
-            <form method="post" action="{{ route('ingredientes.update', 7) }}">
+            <form method="post" action="{{ route('ingredientes.update', $ingredient) }}">
                 @csrf
+                @method('PUT')
 
                 @include('ingredients.partials.fields')
 
                 <div class="form-group row">
                     <div class="col-md-10 offset-md-2">
                         <button class="btn btn-primary" type="submit">
-                            <i class="fas fa-cloud"></i> Registrar
+                            <i class="fas fa-cloud"></i> Actualizar
                         </button>
                         <button class="btn btn-warning" type="reset">
                             <i class="fas fa-broom"></i> Limpiar
@@ -28,7 +27,17 @@
         </div>
     </div>
 
+    <form class="mt-3" action="{{ route('ingredientes.destroy', $ingredient) }}" method="post">
+        @csrf
+        @method('DELETE')
+
+        <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Eliminar</button>
+    </form>
+
     @if ($errors->any())
+
+        <hr>
+
         <div class="card text-white bg-danger mb-3 mt-3">
             <div class="card-header">Errores encontrados</div>
             <div class="card-body">

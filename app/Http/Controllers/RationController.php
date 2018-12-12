@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Ingredient;
 use Illuminate\Http\Request;
 
-class IngredientController extends Controller
+class RationController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $ingredientes = Ingredient::all();
-
-        return view('ingredients.index', [
-            'ingredients' => $ingredientes
-        ]);
+        //
     }
 
     /**
@@ -23,7 +23,7 @@ class IngredientController extends Controller
      */
     public function create()
     {
-        return view('ingredients.create');
+        //
     }
 
     /**
@@ -34,16 +34,7 @@ class IngredientController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'definition' => 'required|max:30'
-        ]);
-
-        $ingredient = new Ingredient;
-        $ingredient->definition = $request->definition;
-
-        $ingredient->save();
-
-        return redirect()->route('ingredientes.index');
+        //
     }
 
     /**
@@ -57,13 +48,15 @@ class IngredientController extends Controller
         //
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function edit($id)
     {
-        $ingredient = Ingredient::find($id);
-
-        return view('ingredients.edit', [
-            'ingredient' => $ingredient
-        ]);
+        //
     }
 
     /**
@@ -75,17 +68,7 @@ class IngredientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validatedData = $request->validate([
-            'definition' => 'required|max:30'
-        ]);
-
-        $ingredient = Ingredient::find($id);
-
-        $ingredient->definition = $request->definition;
-
-        $ingredient->save();
-
-        return redirect()->route('ingredientes.index');
+        //
     }
 
     /**
@@ -96,8 +79,6 @@ class IngredientController extends Controller
      */
     public function destroy($id)
     {
-        Ingredient::destroy($id);
-
-        return redirect()->route('ingredientes.index');
+        //
     }
 }
