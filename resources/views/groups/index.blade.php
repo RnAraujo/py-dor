@@ -12,23 +12,26 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th style="width: 100px">#</th>
                     <th style="width: 100px">ID</th>
-                    <th>Creador</th>
+                    <th style="width: 450px">Creador</th>
                     <th style="width: 120px">Estado</th>
                     <th style="width: 180px">Ver</th>
-                    <th style="width: 200px">Opciones</th>
+                    <th>Opciones</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($groups as $item)
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
                         <td>{{ $item->id }}</td>
                         <td>
-                            {{ $item->user->name }}<br>
-                            <small class="text-info">{{ $item->created_at }}</small>
-                            <pre class="observations">{{ $item->observations }}</pre>
+                            <details>
+                                <summary>
+                                    {{ $item->user->name }} <i class="fas fa-comment text-info"></i>
+                                    <small class="text-info">{{ $item->created_at }}</small>
+                                </summary>
+
+                                <p class="observations"><strong>OBS: </strong> {{ $item->observations }}</p>
+                            </details>
                         </td>
                         <td>
                             @if ($item->is_open)
@@ -45,6 +48,8 @@
                 @endforeach
                 </tbody>
             </table>
+
+            {{ $groups->links() }}
         </div>
     </div>
 @endsection

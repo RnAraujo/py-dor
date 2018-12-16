@@ -18,3 +18,4 @@ Route::resource('ingredientes', 'IngredientController');
 Route::resource('raciones', 'RationController');
 Route::resource('tipos', 'TypeBeneficiaryController');
 Route::resource('dependencias', 'DependencyController');
+Route::resource('beneficiados', 'BenefitedController');

@@ -4,12 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Group;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GroupController extends Controller
 {
+    private $validate = [
+        'user_id'       => 'numeric',
+        'is_open'       => 'boolean',
+        'observations'  => 'required|min:5|max:70'
+    ];
+
     public function index()
     {
-        $groups = Group::all();
+        $groups = Group::orderBy('id', 'desc')->paginate(10);
 
         return view('groups.index', [
             'groups' => $groups
@@ -18,18 +25,25 @@ class GroupController extends Controller
 
     public function create()
     {
-        return view('groups.create');
+        $user = Auth::user();
+
+        return view('groups.create', [
+            'user' => $user
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate($this->validate);
+
+        $group = new Group;
+        $group->user_id = $request->user_id;
+        $group->is_open = $request->is_open;
+        $group->observations = $request->observations;
+
+        $group->save();
+
+        return redirect()->route('grupos.index');
     }
 
     /**

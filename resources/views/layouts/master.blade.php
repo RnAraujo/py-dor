@@ -45,7 +45,7 @@
                     <i class="fas fa-align-justify"></i> Modulos
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#"><i class="far fa-arrow-alt-circle-right"></i> Beneficiados</a>
+                    <a class="dropdown-item" href="{{ route('beneficiados.index') }}"><i class="far fa-arrow-alt-circle-right"></i> Beneficiados</a>
                     <a class="dropdown-item" href="{{ route('dependencias.index') }}"><i class="far fa-arrow-alt-circle-right"></i> Dependencias</a>
                     <a class="dropdown-item" href="{{ route('tipos.index') }}"><i class="far fa-arrow-alt-circle-right"></i> Tipos Beneficiados</a>
                     <a class="dropdown-item" href="{{ route('raciones.index') }}"><i class="far fa-arrow-alt-circle-right"></i> Raciones</a>
@@ -76,6 +76,10 @@
 
 <div class="container">
     @yield('content')
+</div>
+
+<div class="container-fluid">
+    @yield('content-fluid')
 </div>
 
 <!-- Scripts -->
