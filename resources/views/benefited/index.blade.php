@@ -1,31 +1,37 @@
 @extends('layouts.master')
 
 @section('content-fluid')
+    <form action="{{ route('beneficiados.index') }}" method="get">
+    <div class="row mb-3">
+            <div class="col-5">
+                <a href="{{ route('beneficiados.create') }}"><i class="fas fa-plus-square"></i> Crear nuevo beneficiado</a>
+            </div>
 
+            <div class="col-3">
+                <input type="text" class="form-control" name="name" placeholder="Busqueda">
+            </div>
+            <div class="col-2">
+                <select class="custom-select" name="active">
+                    @foreach (config('options.types') as $key => $value)
+                        <option value="{{ $key }}">{{ $value }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-2">
+                <button type="submit" class="btn btn-warning btn-block">
+                    <i class="fas fa-search"></i> Filtrar
+                </button>
+            </div>
+
+    </div>
+    </form>
 
     <div class="card">
         <div class="card-header">
             Formulario de Beneficiados
         </div>
         <div class="card-body">
-            <div class="row mb-3">
-                <div class="col-8">
-                    <a href="{{ route('beneficiados.create') }}"><i class="fas fa-plus-square"></i> Crear nuevo beneficiado</a>
-                </div>
-                <div class="col-2">
-                    <select class="custom-select">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                </div>
-                <div class="col-2">
-                    <button type="button" class="btn btn-warning btn-block">
-                        <i class="fas fa-search"></i> Filtrar
-                    </button>
-                </div>
-            </div>
+
             <p class="text-muted"><strong>{{ $count }}</strong> registros en la base de datos.</p>
             <table class="table table-bordered">
                 <thead>

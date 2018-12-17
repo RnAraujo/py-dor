@@ -20,9 +20,12 @@ class BenefitedController extends Controller
         'dependence_id'        => 'required|numeric'
     ];
 
-    public function index()
+    public function index(Request $request)
     {
-        $benefited = Benefited::orderBy('id', 'desc')->paginate(10);
+        $is_active = $request->get('active');
+        $name = $request->get('name');
+
+        $benefited = Benefited::name($name)->active($is_active)->orderBy('id', 'desc')->paginate(10);
         $count = Benefited::all()->count();
 
         return view('benefited.index', [

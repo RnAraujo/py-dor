@@ -8,6 +8,23 @@ class Benefited extends Model
 {
     protected $table = 'benefited';
 
+    public function scopeName($query, $name)
+    {
+        if(trim($name != ''))
+        {
+            return $query->where('firstname', 'LIKE', "%$name%")
+                ->orWhere('lastname', 'LIKE', "%$name%");
+        }
+    }
+
+    public function scopeActive($query, $active)
+    {
+        if($active != '')
+        {
+            return $query->where('is_active', $active);
+        }
+    }
+
     public function ration()
     {
         return $this->belongsTo('App\Ration');
