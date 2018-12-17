@@ -15,7 +15,7 @@ class CreateBenefitedTable extends Migration
     {
         Schema::create('benefited', function (Blueprint $table) {
             $table->increments('id');
-            // $table->char('card', 8)->unique();
+            $table->char('card', 8)->unique();
             $table->string('lastname', 60);
             $table->string('firstname', 40);
             $table->boolean('is_active');

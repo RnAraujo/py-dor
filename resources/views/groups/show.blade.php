@@ -1,23 +1,26 @@
 @extends('layouts.master')
 
-@section('content')
+@section('content-fluid')
 
 
     <div class="card">
         <div class="card-header">
-            Beneficiados
+            Grupo de Beneficiados
         </div>
         <div class="card-body">
-            <a class="btn btn-primary" href="#"><i class="fas fa-plus-square"></i> Agregar</a>
+            @if ($is_open)
+                <a class="btn btn-primary" href="#"><i class="fas fa-plus-square"></i> Agregar</a>
+            @endif
 
             <table class="table table-bordered mt-3">
-                <thead>
+                <caption>{{ $count }} registros en el grupo.</caption>
+                <thead class="thead-light">
                 <tr>
                     <th style="width: 100px">ID</th>
-                    <th style="width: 450px">Bene</th>
-                    <th style="width: 120px">Ración</th>
+                    <th>Beneficiados</th>
+                    <th style="width: 270px">Ración</th>
                     <th style="width: 120px">Boleto</th>
-                    <th>Opciones</th>
+                    <th style="width: 170px">Opciones</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -26,9 +29,15 @@
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->benefited->full_name }}</td>
                         <td>{{ $item->benefited->ration->definition }}</td>
-                        <td>{{ $item->turkey_ticket }}</td>
                         <td>
-                            <a href="{{ route('grupos.edit', $item) }}"><i class="fas fa-trash"></i> Eliminar</a>
+                            <i class="fas fa-cat"></i>&ensp;{{ $item->turkey_ticket }}
+                        </td>
+                        <td>
+                            @if ($is_open)
+                                <a href="{{ route('grupos.edit', $item) }}"><i class="fas fa-trash"></i> Eliminar</a>
+                            @else
+                                <span class="text-muted"><i class="fas fa-lock"></i>&ensp;Restringido</span>
+                            @endif
                         </td>
                     </tr>
                 @endforeach

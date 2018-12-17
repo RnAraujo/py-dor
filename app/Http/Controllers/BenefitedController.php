@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 class BenefitedController extends Controller
 {
     private $validate = [
+        'card'                 => 'required|max:8',
         'lastname'             => 'required|min:5|max:60',
         'firstname'            => 'required|min:3|max:40',
         'is_active'            => 'required|boolean',
@@ -50,6 +51,7 @@ class BenefitedController extends Controller
         $request->validate($this->validate);
 
         $benefited = new Benefited;
+        $benefited->card                = $request->card;
         $benefited->lastname            = strtoupper($request->lastname);
         $benefited->firstname           = strtoupper($request->firstname);
         $benefited->is_active           = $request->is_active;

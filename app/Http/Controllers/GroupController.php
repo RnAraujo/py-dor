@@ -49,12 +49,16 @@ class GroupController extends Controller
 
     public function show($id)
     {
+        $group = Group::find($id);
+
         $benefited = Sheet::where('group_id', $id)->get();
-        //$benefited = Sheet::all();
+        $count = Sheet::where('group_id', $id)->count();
 
 
         return view('groups.show', [
-            'benefited' => $benefited
+            'benefited'  => $benefited,
+            'is_open'    => $group->is_open,
+            'count'      => $count
         ]);
     }
 
