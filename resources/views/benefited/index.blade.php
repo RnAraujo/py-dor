@@ -26,6 +26,7 @@
                     </button>
                 </div>
             </div>
+            <p class="text-muted"><strong>{{ $count }}</strong> registros en la base de datos.</p>
             <table class="table table-bordered">
                 <thead>
                 <tr>

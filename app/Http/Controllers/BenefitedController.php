@@ -22,9 +22,11 @@ class BenefitedController extends Controller
     public function index()
     {
         $benefited = Benefited::orderBy('id', 'desc')->paginate(10);
+        $count = Benefited::all()->count();
 
         return view('benefited.index', [
-            'benefited' => $benefited
+            'benefited' => $benefited,
+            'count'     => $count
         ]);
     }
 

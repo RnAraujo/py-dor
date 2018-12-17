@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Group;
+use App\Sheet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -46,15 +47,15 @@ class GroupController extends Controller
         return redirect()->route('grupos.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        $benefited = Sheet::where('group_id', $id)->get();
+        //$benefited = Sheet::all();
+
+
+        return view('groups.show', [
+            'benefited' => $benefited
+        ]);
     }
 
     /**

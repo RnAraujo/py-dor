@@ -40,7 +40,9 @@
                                 <span class="badge badge-danger">Cerrado</span>
                             @endif
                         </td>
-                        <td><i class="fas fa-clipboard-list"></i> Beneficiados</td>
+                        <td>
+                            <a href="{{ route('grupos.show', $item) }}"><i class="fas fa-clipboard-list"></i> Beneficiados</a>
+                        </td>
                         <td>
                             <a href="{{ route('grupos.edit', $item) }}"><i class="fas fa-edit"></i> Editar</a>
                         </td>
