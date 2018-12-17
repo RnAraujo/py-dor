@@ -3,13 +3,13 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            Formulario de Beneficiados
+            Agrupación de beneficiados
         </div>
         <div class="card-body">
-            <form method="post" action="{{ route('beneficiados.store') }}">
+            <form method="post" action="{{ route('hojas.store') }}">
                 @csrf
 
-                @include('benefited.partials.fields')
+                @include('sheets.partials.fields')
 
                 <div class="form-group row">
                     <div class="col-md-10 offset-md-2">

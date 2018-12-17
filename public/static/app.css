@@ -1,6 +1,8 @@
-pre.observations {
+.observations {
     border-left: 2px solid #6495ed;
-    margin-top: 10px;
+    margin-top: 7px;
     padding-left: 5px;
     font-size: 0.8em;
+    font-style: italic;
+    display: block;
 }

@@ -54,11 +54,13 @@ class GroupController extends Controller
         $benefited = Sheet::where('group_id', $id)->get();
         $count = Sheet::where('group_id', $id)->count();
 
+        session(['group_id' => $group->id]);
 
         return view('groups.show', [
             'benefited'  => $benefited,
             'is_open'    => $group->is_open,
-            'count'      => $count
+            'count'      => $count,
+            'group_id'   => $group->id
         ]);
     }
 
@@ -94,5 +96,17 @@ class GroupController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function close(Request $request)
+    {
+        $group_id = $request->session()->get('group_id');
+
+        $group = Group::find($group_id);
+        $group->is_open = false;
+
+        $group->save();
+
+        return redirect()->route('grupos.index');
     }
 }
