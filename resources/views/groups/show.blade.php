@@ -21,8 +21,8 @@
             @endif
 
             @if (session('message'))
-                <div class="alert alert-warning">
-                    {{ session('message') }}
+                <div class="alert alert-warning mt-2">
+                    <h1 class="display-3"><i class="fas fa-comment"></i> {{ session('message') }}</h1>
                 </div>
             @endif
 

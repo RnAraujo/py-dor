@@ -17,7 +17,7 @@ class CreateSheetsTable extends Migration
             $table->increments('id');
             $table->integer('group_id')->unsigned();
             $table->integer('benefited_id')->unsigned();
-            $table->integer('turkey_ticket')->unsigned()->unique();
+            $table->integer('turkey_ticket')->unsigned();
             $table->string('observations', 100);
             $table->timestamps();
         });
